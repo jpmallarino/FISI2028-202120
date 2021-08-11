@@ -1,0 +1,40 @@
+name: fisi2028
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - click
+  - configparser
+  - cython
+  - decorator
+  - hdf5
+  - imageio
+  - imagemagick
+  - ipykernel
+  - ipython
+  - ipython_genutils
+  - ipywidgets
+  - jupyter_client
+  - jupyter_core
+  - jupyterlab_launcher
+  - matplotlib
+  - matplotlib-base
+  - mpmath
+  - nb_conda_kernels
+  - nbconvert
+  - nbformat
+  - numba
+  - numpy
+  - pandas
+  - pytest
+  - pytest-runner
+  - python=3
+  - python-dateutil
+  - python-utils
+  - python_abi
+  - scikit-learn
+  - scipy
+  - seaborn
+  - statsmodels
+  - sympy
+  - widgetsnbextension
