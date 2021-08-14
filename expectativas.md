@@ -25,8 +25,9 @@ TODO
 - [x] Revisar binder de github: ¡Hecho!
 - [x] Terminal de linux online:
   > https://github.com/copy/v86
+
   > https://cocalc.com/doc/terminal.html
-  <!-- https://buildroot.org/ -->
-  [//]: <> (This is also a comment.)
+
   > https://bellard.org/jslinux/
+  <!-- https://buildroot.org/ -->
 - [x] ¿Conocen Gitter?
