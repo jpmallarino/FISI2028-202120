@@ -1,7 +1,7 @@
 # Métodos Computacionales - Segundo Semestre 2021
 
 ### Entornos de programación académica en línea:
-* [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jpmallarino/FISI2028-202120/master?urlpath=lab/tree/ipynb)
+* [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jpmallarino/FISI2028-202120/main?urlpath=lab/tree/ipynb)
 * Para crear su ambiente propio siga las siguientes instrucciones:
 1. Primero instalar [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
 2. Instalar la base para JupyterLab (sólo en Unix o WSL): `conda install -n base jupyterlab nb_conda_kernels`
