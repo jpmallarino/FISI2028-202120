@@ -30,3 +30,21 @@
 *.exe
 *.out
 *.app
+exe
+
+# Latex extra
+*.aux
+*.dvi
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+
+# Latex mint
+_minted*
+
+# Latex source
+*.tex
+*.bib
