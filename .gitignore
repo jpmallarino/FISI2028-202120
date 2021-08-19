@@ -48,3 +48,6 @@ _minted*
 # Latex source
 *.tex
 *.bib
+
+# Images folders for Copyright
+images

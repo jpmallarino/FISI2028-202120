@@ -22,17 +22,22 @@ else
   APP1_FILE=$3
 fi
 
-re="^[0-9]+$"
+re="^[0-9]+$" # Regular Expressions RegEx
 if ! [[ $APP1_INT =~ $re ]]
 then
   echo "Error: Max value [=$APP1_INT] not a positive integer number" >&2; exit 1
 fi
 
+# Verifica existencia de archivos y directorios
 [ -f $APP1_FILE ] && echo "File: <$APP1_FILE> exists and will be overwritten" 1>&2
 
 printf "Checks passed, running the calculations\n" >&2
+# Especificadores de formato %d -> entero, %f -> decimal flotante, %lf -> decimal doble
 printf "Process id=%d\n" $$
 
+# \t es el "tabular"
+# elimina contenido de app1_file y comienza de ceros
+# si no quiero eliminar, la informacion utilizo >>
 echo -e "experiment\tdata" > $APP1_FILE
 for it in `seq $NUM_TRIALS`
 do
