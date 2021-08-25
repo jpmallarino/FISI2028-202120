@@ -41,13 +41,19 @@ exe
 *.snm
 *.toc
 *.vrb
+*.fdb_latexmk
+*.fls
 
 # Latex mint
-_minted*
+_minted-*
 
 # Latex source
 *.tex
 *.bib
+
+# Latex build short script
+.build
+.clean
 
 # Images folders for Copyright
 images
