@@ -1,5 +1,8 @@
 #include <iostream>
 #include <fstream>
+#include <string>
+#include <iomanip>
+#include <cmath>
 
 using namespace std;
 
@@ -25,18 +28,67 @@ void swap(float &a, float &b){ // Cuidado: mutar los scopes fuera de ellas!
     a = a - b;
 }
 
+int digits(int a){
+    // dividir por 10
+    // loop en el cual divido por 10 y miro el valor de a
+    // continuar dividiendo hasta que el valor sea 0
+    // el operador / solo funciona entre los mismos tipos de
+    // variables
+    int contador = 0;
+
+    // 0 es un edge case
+    if (a == 0){
+        return 1;
+    }
+    // negativos es otro edge case
+    if (a < 0){
+        // a = -a;
+        a = abs(a);
+    }
+    // la implementacion no contempla que a = 0
+    while(a > 0){ // loop sin terminacion definida
+        a = a / 10;
+        contador ++;
+    }
+    return contador;
+}
+
+bool is_digit_in_number(int d, int a){
+    // esta d en a?
+}
+
+int unique_digits(int a){
+    // residuo
+    // 134 -> 134 mod 10 = 4
+    // 134 -> (134 / 10) mod 10 = 3
+    // 134 -> (134 / 100) mod 10 = 1
+
+    int i;
+    int a_tmp = a;
+    int d;
+    for(i=0; i < digits(a) ; i++){
+        d = a_tmp % 10;
+        a_tmp = a_tmp / 10;
+        cout<<"digit: "<< i << " es " << d << endl;
+    }
+
+}
+
 int main(void){
     // scope: main (funcion)
-    int j = 37;
+    int j = 1000;
     cout<<"Value of 'j'? "<<j<<endl;
     cout<<"Value of 'FISI2028::sum'? "<<FISI2028::sum<<endl;
 
     float a = 1;
     float b = 3.3;
-    cout<< a << ", " << b << endl;
-    swap(a,b);
+    cout<<setprecision(9)<< a << ", " << b << endl;
+    swap(a,b); // pasar por referencia
     cout<<"finalmente... "<< a << ", " << b << endl;
 
+    cout<<"valor de 'j'? "<<j<<endl;
+    cout<<"cuantos digitos tiene 'j'? "<< digits(j) << endl;
 
+    unique_digits(j);
     return 0;
 }
