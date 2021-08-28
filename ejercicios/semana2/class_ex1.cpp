@@ -55,28 +55,42 @@ int digits(int a){
 
 bool is_digit_in_number(int d, int a){
     // esta d en a?
+    int digit;
+    if (a == 0 && d == 0){
+        return true;
+    }
+    while (a > 0){
+        digit = a % 10;
+        if(digit == d){
+            return true;
+        }
+        a /= 10;
+    }
+    return false;
 }
 
-int unique_digits(int a){
+void unique_digits(int a){ // pasa por valor!
     // residuo
     // 134 -> 134 mod 10 = 4
     // 134 -> (134 / 10) mod 10 = 3
     // 134 -> (134 / 100) mod 10 = 1
 
     int i;
-    int a_tmp = a;
-    int d;
-    for(i=0; i < digits(a) ; i++){
-        d = a_tmp % 10;
-        a_tmp = a_tmp / 10;
-        cout<<"digit: "<< i << " es " << d << endl;
+    int contador = 0;
+    if (a < 0){
+        a = -a;
     }
-
+    for(i = 0; i <= 9; i++){
+        if(is_digit_in_number(i,a))
+            contador++;
+    }
+    cout<<"el numero de digitos unicos de a="<<a<<" es "<<contador<<endl;
+    // return contador;
 }
 
 int main(void){
     // scope: main (funcion)
-    int j = 1000;
+    int j = 0;
     cout<<"Value of 'j'? "<<j<<endl;
     cout<<"Value of 'FISI2028::sum'? "<<FISI2028::sum<<endl;
 
@@ -89,6 +103,9 @@ int main(void){
     cout<<"valor de 'j'? "<<j<<endl;
     cout<<"cuantos digitos tiene 'j'? "<< digits(j) << endl;
 
-    unique_digits(j);
+    cout << "prueba a la funcion is_digit_in_number()" << endl;
+    cout << is_digit_in_number(2,2010) << endl;
+
+    unique_digits(j); // j = 0 es un 'edge' case
     return 0;
 }
