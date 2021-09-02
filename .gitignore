@@ -32,6 +32,9 @@
 *.app
 exe
 
+# Hidden Jupyter notebooks
+_*.ipynb
+
 # Latex extra
 *.aux
 *.dvi
