@@ -59,5 +59,6 @@ _minted-*
 .clean
 
 # Images folders for Copyright
+.vscode
 images
 output*

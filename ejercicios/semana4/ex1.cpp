@@ -8,8 +8,9 @@ using namespace std;
 int* fib_cache;
 int fib_cache_n=0; // el elemento que se ha calculado y guardado
 uint fib_cache_calls = 0;
+// Memoization & Dynamic Programming
 int f_fibonacci_cache(int n){
-    fib_cache_calls++;
+    fib_cache_calls++; // cuantas veces he llamado f_fibonacci_cache
     if(n <= fib_cache_n)
         return fib_cache[n];
     if(n == 1 || n == 0){
@@ -47,11 +48,20 @@ int main(void){
     cout<<"\tllamados recursivos: "<<fib_calls<<endl;
     cout<<"el elemento "<<fib_n<<" es (cache) "<<f_fibonacci_cache(fib_n)<<endl;
     cout<<"\tllamados recursivos: "<<fib_cache_calls<<endl;
-    if(fib_cache){
+    if(fib_cache){ // C/C++ null equivale a falso
         cout<<"deleting fib cache!"<<endl;
         cout<<"::cache:: "<<print_vector(fib_cache,fib_n)<<endl;
         delete [] fib_cache, fib_cache = nullptr;
     }
+
+    int x1=0,x2=1;
+    for (int i = 1; i < fib_n ; i++){
+        int temp = x1 + x2;
+        cout<<"fib("<<i+1<<") = "<<temp<<endl;
+        x1 = x2;
+        x2 = temp;
+    }
+
     return 0;
 }
 

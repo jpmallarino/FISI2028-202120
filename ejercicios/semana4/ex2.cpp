@@ -8,7 +8,7 @@ using namespace std;
 
 int main(void){
     string s1,s2;
-    cout<<"LCS"<<endl;
+    cout<<"LCS"<<endl; // Largest Common Subsequence
     cout<<"Primera cadena de caracteres: ";
     getline(cin,s1);
     cout<<"Segunda cadena de caracteres: ";
