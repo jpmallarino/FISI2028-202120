@@ -59,6 +59,9 @@ _minted-*
 .clean
 
 # Images folders for Copyright
-.vscode
 images
 output*
+
+# Notebooks and other stuff
+.ipynb_checkpoints
+.vscode
