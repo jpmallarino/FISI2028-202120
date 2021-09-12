@@ -16,7 +16,6 @@ int main(void){
     int fib_n;
     cout<<"cual elemento desea calcular? "; cin>>fib_n;
     // dimensionar el vector dinamico
-    fib_cache = new int[fib_n];
     cout<<"el elemento "<<fib_n<<" es "<<f_fibonacci(fib_n)<<endl;
     cout<<"\tllamados recursivos: "<<fib_calls<<endl;
     return 0;

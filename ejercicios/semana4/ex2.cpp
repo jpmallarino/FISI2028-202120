@@ -38,6 +38,49 @@ int longest_common_subsequence_rec(string s1, string s2){
 }
 
 
+int longest_common_subsequence_simple(string s1, string s2){
+    int l1 = s1.length();
+    int l2 = s2.length();
+    int **redux_matrix;
+
+    // // Metodo 1: crear matrices
+    // redux_matrix = new int*[l1+1];
+    // for(int it = 0; it <= l1; it++)
+    //     redux_matrix[it] = new int[l2+1];
+    // Metodo 2: mas eficiente
+    redux_matrix = new int*[l1+1];
+    redux_matrix[0] = new int[ (l1 + 1) * (l2 + 1) ];
+    for(int it = 1; it <= l1; it++)
+        redux_matrix[it] = redux_matrix[it-1] + (l2 + 1);
+
+    int v1,v2;
+    for (int it = 0; it <= l1; it++)
+        for (int jt = 0; jt <= l2; jt++) {
+            redux_matrix[it][jt] = 0;
+            if (it > 0 && jt > 0) {
+                if (s1.at(it-1) == s2.at(jt-1)) {
+                    v1 = redux_matrix[it-1][jt-1];
+                    redux_matrix[it][jt] = v1 + 1;
+                } else {
+                    v1 = redux_matrix[it][jt-1];
+                    v2 = redux_matrix[it-1][jt];
+                    redux_matrix[it][jt] = max(v1,v2);
+                }
+            }
+        }
+    int lcs_length = redux_matrix[l1][l2];
+
+    // // Metodo 1: crear matrices
+    // for(int it = 0; it <= l1; it++)
+    //     delete [] redux_matrix[it], redux_matrix[it] = nullptr;
+    // delete [] redux_matrix, redux_matrix = nullptr;
+    // Metodo 2: mas eficiente
+    delete [] redux_matrix[0], redux_matrix[0] =  nullptr;
+    delete [] redux_matrix, redux_matrix = nullptr;
+
+    return lcs_length;
+}
+
 int longest_common_subsequence(string s1, string s2){
     int l1 = s1.length();
     int l2 = s2.length();
@@ -70,8 +113,8 @@ int main(void){
     getline(cin,s2);
 
     cout<<"\nLCS:: "<<longest_common_subsequence(s1,s2)<<endl;
-
-    cout<<"LCS_rec:: "<<longest_common_subsequence_rec(s1,s2)<<endl;
+    cout<<"LCS simple:: "<<longest_common_subsequence_simple(s1,s2)<<endl;
+    // cout<<"LCS rec:: "<<longest_common_subsequence_rec(s1,s2)<<endl;
 
     return 0;
 }
