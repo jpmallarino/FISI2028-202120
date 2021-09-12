@@ -8,7 +8,7 @@ Este problema se puede descomponer en las siguientes partes:
    > También conviene agregar la cima como una parada obligada,
    > de tal manera que la parada cima es sólo la última parada
    > obligada.
- - ¡Subir $$n$$ escaleras por fases!
+ - ¡Subir *n* escaleras por fases!
  - Implementen recursividad ya que es la solución más simple.
 
 ## La solución provisional
