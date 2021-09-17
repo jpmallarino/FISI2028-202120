@@ -321,7 +321,7 @@ int main(void){
 			caminos_rec(0,escalones,j,vec_j) << endl;
 		cout << "  TEST:: resultado vector completo: " <<\
 			caminos(escalones,j,vec_j,false,true) << endl;
-#ifdef PROGRESS
+#ifdef PROGRESS // directiva del PREPROCESADOR -> Compilador
 		caminos(escalones,j,vec_j,true,false);
 #endif
 	}

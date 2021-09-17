@@ -15,7 +15,7 @@ using namespace std;
 	- ordenar_vec que ordena el vector
 */
 string ver_vec(int * const vec, int const n){
-	ostringstream ss;
+	ostringstream ss; // output string stream
     ss << "[ ";
     for (int k = 0; k < n; k++) {
         ss << vec[k] << ' ';
@@ -56,7 +56,7 @@ bool ordenar_dupla(int &a, int &b){
 bool ordenar_vec(int *vec, int n){
 	// No vamos a hacer un merge sort... sólo un simple sort
 	// retorna verdadero o falso si tiene que ordenar o no respectivamente
-	if (n>2){
+	if (n>=2){
 		// ¿tuvo que ordenar?
 		bool ordeno = false;
 		// supongo que el vector es ordenado
@@ -99,7 +99,7 @@ bool ordenar_vec(int *vec, int n){
 */
 int caminos_rec(int e,int n, int j, int *vec_j){
 	if (e >= n)
-		return e == n ? 1:0;
+		return e == n ? 1:0; // no me puedo pasar!
 	int acumulador = 0;
 	for (int i = 0; i < j; i++){
 		int e_nuevo = e+vec_j[i];
@@ -172,7 +172,7 @@ int main(void){
 		cerr << "[error+paradas] 'k>=0' un entero. Valor obtenido: " << k << endl; 
 		return 5;
 	}
-	vec_k = new int[k+1];
+	vec_k = new int[k+1]; // Generalizo para cualquier # de paradas obligadas
 
 	cout << "Ingrese los escalones en los que hay paradas oblitadas:" << endl;
 	for( int a = 0; a < k; a++ ){
@@ -195,7 +195,7 @@ int main(void){
 	}
 	vec_k[k] = n;
 	k = k + 1;
-	ordenar_vec(vec_k, k);
+	// ordenar_vec(vec_k, k);
 
 	cout << "\n\n\nResumen:\n";
 	cout << "  n=" << n << endl;
@@ -206,7 +206,7 @@ int main(void){
 	int *caminos_entre_paradas;
 	caminos_entre_paradas = new int[k];
 	for (int i=0; i < k; i++){
-		int escalones = vec_k[i] - ( i > 0 ? vec_k[i-1] : 0 );
+		int escalones = vec_k[i] - ( i > 0 ? vec_k[i-1] : 0 ); // a = vec_k[i-1] if i > 0 else 0
 		caminos_entre_paradas[i] = caminos_rec(0,escalones,j,vec_j);
 		cout << "Parada "<< i+1 << " /" << k << endl;
 		cout << "  trayecto: " << ( i > 0 ? vec_k[i-1] : 0 ) <<\
