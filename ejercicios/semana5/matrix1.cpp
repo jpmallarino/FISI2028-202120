@@ -1,7 +1,7 @@
 #include <iostream>
 #include <Eigen/Dense>
  
-using Eigen::MatrixXd;
+using Eigen::MatrixXd; // Objeto que me crea una matriz DINAMICA
  
 int main()
 {
