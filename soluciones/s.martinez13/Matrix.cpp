@@ -1,5 +1,5 @@
 #include <iostream>
-#include <eigen/dense>
+#include <Eigen/Dense>
 
 using namespace std;
 
