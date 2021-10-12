@@ -2,59 +2,45 @@
 #include <fstream>
 #include <string>
 #include <Eigen/Dense>
-
+#include <conio.h>
+#include<vector>
 using namespace std;
 using namespace Eigen;
 
-#define BUFF  ((int) 1500)
-
-MatrixXd Matriz(const char *documento)
+MatrixXd Data(string fileToOpen)
 {
-    int cols = 0, rows = 0;
-    double buff[BUFF];
 
-    
-    ifstream infile;
-    infile.open(documento);
-    while (!infile.eof())
+    vector<double> matrixEntries;
+    ifstream matrixDataFile(fileToOpen);
+    string matrixRowString;
+    string matrixEntry;
+
+    int matrixRowNumber = 0;
+
+
+    while (getline(matrixDataFile, matrixRowString))
     {
-        string line;
-        getline(infile, line);
+        stringstream matrixRowStringStream(matrixRowString);
 
-        int temp_cols = 0;
-        stringstream stream(line);
-        while (!stream.eof())
-            stream >> buff[cols * rows + temp_cols++];
-
-        
-
-        if (cols == 0)
-            cols = temp_cols;
-
-        rows++;
+        while (getline(matrixRowStringStream, matrixEntry, ','))
+        {
+            matrixEntries.push_back(stod(matrixEntry));
+        }
+        matrixRowNumber++;
     }
 
-    infile.close();
+    return Map<Matrix<double, Dynamic, Dynamic, RowMajor>>(matrixEntries.data(), matrixRowNumber, matrixEntries.size() / matrixRowNumber);
 
-    rows--;
-
-    
-    MatrixXd result(rows, cols);
-    for (int i = 0; i < rows; i++)
-        for (int j = 0; j < cols; j++)
-            result(i, j) = buff[cols * i + j];
-
-    return result;
-};
+}
 
 void InvertirGaussJordan()
 {
-    MatrixXd m = Matriz("Texto.txt"), I(m.rows(), m.rows());
-
+    MatrixXd m = Data("Texto.txt"), I(m.rows(),m.rows());
+    int c = m.rows();
     //Se crea la matriz identidad
-    for (int x = 0; x < m.rows(); x++)
+    for (int x = 0; x < c; x++)
     {
-        for (int y = 0; y < m.rows(); y++)
+        for (int y = 0; y < c; y++)
         {
             I(x, y) = 0;
             if (x == y)
@@ -66,30 +52,31 @@ void InvertirGaussJordan()
     }
     cout << "Matriz inicial:\n " << m << endl;
     cout << "Matriz identidad:\n " << I << endl;
-    //Para lograr que la diagonal de la matriz sea 1, se divide cada elemento de la diagonal por el mismo y por su
-    //fila correspondiente, igual con la matriz identidad.
-    for (int x = 0; x < m.rows(); x++)
+    cout << m.cols()<<endl;  
+    /*Para lograr que la diagonal de la matriz sea 1, se divide cada elemento de la diagonal por el mismo y por su
+    fila correspondiente, igual con la matriz identidad.*/
+    for (int x = 0; x < c; x++)
     {
         float v = m(x, x);
 
-        for (int y = 0; y < m.rows(); y++)
+        for (int y = 0; y < c; y++)
         {
 
-            m(x, y) = m(x, y) / v;
-            I(x, y) = I(x, y) / v;
+            m(x, y) = m(x, y)*(1/v);
+            I(x, y) = I(x, y)*(1/v);
         }
 
 
-        for (int j = 0; j < m.rows(); j++)
+        for (int j = 0; j < c; j++)
         {
             //verifico no estar en diagonal y empiezo a hacer GJ:
             if (x != j)
             {
                 float  s = m(j, x);
-                for (int k = 0; k < m.rows(); k++)
+                for (int k = 0; k < c; k++)
                 {
-                    m(j, k) = m(j, k) - s * m(x, k);
-                    I(j, k) = I(j, k) - s * I(x, k);
+                    m(j, k) = m(j, k) - (s * m(x, k));
+                    I(j, k) = I(j, k) - (s * I(x, k));
                 }
 
 
@@ -105,20 +92,54 @@ void InvertirGaussJordan()
     archivo.open("Texto.txt", ios::app);
     if (archivo.is_open())
     {
-        archivo << I;
+        archivo <<"La inversa es: \n"<< I;
         archivo.close();
     }
 }
    
-        
+int determinantecofactor(Matrix2d x)
+{
+    int resultado;
+    resultado = x(0, 0) * x(1, 1) - x(0, 1) * (1, 0);
+    return resultado;
+}
     
-    
+void determinante(MatrixXd m)
+{
+    //intento de una funcion recursiva que calcula el determinante por cofactores.
+     if (m.rows() == 2)
+     {
+         return determinantecofactor(m);
+     }
+    vector<int> f;
+   
+        for (int i = 0; i < m.rows(); i++)
+        {
+            for (int j = 0; j < m.rows(); j++)
+            {
+                for (int k = 0; k < m.rows(); k++)
+                {
+                    if ((j == i) && (k == 0))
+                    {
+                        continue;
+                        
+                    }
+                    MatrixXd m_l(m.rows() - 1, m.rows() - 1);
+                    m_l(l,i) = m(j, k);
+                    f.push_back(m(j, k));
+                }
 
+            }
+        }
+    
+        cout << int(f.size()) << endl;
+}
 int main() 
 {
 
    
     InvertirGaussJordan();
+    determinante(Data("Texto.txt"));
     return 0;
 
 }
