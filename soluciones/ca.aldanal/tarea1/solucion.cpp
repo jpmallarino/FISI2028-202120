@@ -42,7 +42,7 @@ int main() {
 
     }
     cout << "\nEl numero total de posibilidades para subir la escalera es: " << posibilidades * posibles << "\n";
-    system("pause>0");
+    system("pause>0"); // ¿Porqué pones esto?
 }
 
 void pedir_escalones() {

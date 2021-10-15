@@ -202,7 +202,7 @@ int main()
     MatrixXd matrizOriginal;
     MatrixXd prueba(matrizOriginal.rows(), matrizOriginal.cols());
 
-    matrizOriginal = Leer("archivo2.csv");
+    matrizOriginal = Leer("archivo2.csv"); // Limita mucho las posibilidades no?
 
     int n = matrizOriginal.rows();
     int m = matrizOriginal.cols();

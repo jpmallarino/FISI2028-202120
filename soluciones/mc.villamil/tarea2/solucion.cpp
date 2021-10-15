@@ -162,17 +162,17 @@ void printMatrix(Matrix M)
 void saveMatrix(Matrix M, char* fileName) 
 {
     FILE *fp;
-    fopen_s(&fp, fileName, "w");
+    fp = fopen( fileName, "w");
     char linea[80];
     if (fp != NULL) 
     {
-        sprintf_s(linea, "%d\t%d\n", M.f, M.c);
+        sprintf(linea, "%d\t%d\n", M.f, M.c);
         fputs(linea, fp);
         for (int i = 0; i < M.f; i++) 
         {
             for (int j = 0; j < M.c; j++)
             {
-                sprintf_s(linea, "%.2f\t", M.datos[i][j]);
+                sprintf(linea, "%.2f\t", M.datos[i][j]);
                 fputs(linea, fp);
             }
             fputs("\n", fp);

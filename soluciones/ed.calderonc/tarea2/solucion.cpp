@@ -13,10 +13,10 @@ MatrixXd gaussInversa(MatrixXd);
 MatrixXd cfactInversa(MatrixXd);
 
 
-//Función principal
+//Funciï¿½n principal
 int main() {
 
-    MatrixXd m = leerArchivo("D:\\Documents\\matriz.txt");
+    MatrixXd m = leerArchivo("matriz.csv");
 
     MatrixXd inversaXGauss = gaussInversa(m);
     crearArchivo("InversaXGauss.txt", inversaXGauss);
@@ -48,7 +48,7 @@ MatrixXd gaussInversa(MatrixXd original) {
         }
     }
 
-    //Reducción
+    //Reducciï¿½n
     for (int i = 0; i < n; i++) {
         pivot = original(i, i);
         for (int k = 0; k < n; k++) {

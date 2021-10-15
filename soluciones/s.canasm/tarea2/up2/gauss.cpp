@@ -1,9 +1,11 @@
+// Muy loco lo que hiciste! Era todo mucho mas facil si hubieras usado Eigen...
+
 //Tarea 2 Metodos Computacionales Samuel David Cañas 201922001
 //Esta parte del codigo es la responsable de invertir la matriz por gauss jordan 
 
 #include<stdio.h>
 #include<stdlib.h>
-#include<conio.h>
+// #include<conio.h>
 void imprimem(float [10][10]); //imprime una matriz de forma ordenada
 void capturam(float [10][10],int,int); //captura una matriz n*m
 void mid(float x[10][10]); //encuentra la matriz identidad de n*n
@@ -23,11 +25,11 @@ float a[10][10],b[10][10],c[10][10],d[10][10];
 main()
 {
 	float z;
-	system("cls");
+	// system("cls");
 	printf("\nDa el tamaño de la matriz:>");
 	scanf("%d",&n);
 	m=n;
-	system("cls");
+	// system("cls");
 	z=minv();
 	getch();
 	return(0);

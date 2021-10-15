@@ -63,7 +63,7 @@ int main()
     Guardar_archivo("InversaEigen", matriz_archivo.inverse());
   
 
-    system("pause>nul");
+    system("pause>nul"); // ¿Porqué pones esto?
     return 0;
 }
 

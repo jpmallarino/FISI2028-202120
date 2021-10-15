@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <eigen3/Eigen/Dense>
+#include <Eigen/Dense>
  
 using namespace std;
 using namespace Eigen;

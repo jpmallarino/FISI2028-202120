@@ -4,6 +4,7 @@
 #include <string>
 #include <math.h>
 
+// Excelente solución. ¡Me parece que deberías exponerla en la clase!
 
 using namespace std;
 
