@@ -65,3 +65,6 @@ output*
 # Notebooks and other stuff
 .ipynb_checkpoints
 .vscode
+
+# MacOS trash
+.DS_Store
