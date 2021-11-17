@@ -1,9 +1,9 @@
 import numpy as np
-import pandas as pd
+
 import scipy as sp
 import sklearn as sl
 
-import seaborn as sns
+
 from sklearn.metrics import r2_score
 
 sns.set()
@@ -125,6 +125,14 @@ polinomio = np.polynomial.polynomial.Polynomial(coef=regresion_polinomica)
 xx = np.arange(start=0, stop=4.1, step=0.1)
 # plt.scatter(x, y, color="red")
 plt.plot(xx, polinomio(xx), color="green")
+
+puntoc = np.linalg.inv(xini.T @ xini) @ xini.T @ yini
+b0, b1, b2, b3, b4, b5 = puntoc
+coeficientes = str(b0) +','+ str(b1) + ',' + str(b2) + ',' + str(b3) + ',' + str(b4) + ',' + str(b5)
+
+print(f"Los valores de los Coeficientes son = {coeficientes}")
+print(f"El valor para f(0) es :", puntoc[0])
+
 
 
 
